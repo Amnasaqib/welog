@@ -141,7 +141,7 @@ def collect_details():
         print("A booking for this client already exists on this date.")
         print("You can only book one appointment per day per client.\n")
         book_again_prompt("terminated")
-    else:
+     else:
         confirm_appointment(appt_details)
          
 
