@@ -54,15 +54,15 @@ def main_menu():
             break
 
      if main_menu_ans == ("1"):
-        collect_details()
+         collect_details()
      elif main_menu_ans == ("2"):
-        search_date("today")
+         search_date("today")
      elif main_menu_ans == ("3"):
-        search_menu()
+         search_menu()
      elif main_menu_ans == ("4"):
-        cancelation_prompt()
+         cancelation_prompt()
      elif main_menu_ans == ("5"):
-        app_info()
+         app_info()
 
 def search_menu():
      """
