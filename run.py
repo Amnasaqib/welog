@@ -157,7 +157,7 @@ def get_date(reason):
            main_menu()
            break
          else:
-            try:
+             try:
                  date_fm = datetime.datetime.strptime(date_input,
                                                      "%d/%m/%Y").date()
              except ValueError:
@@ -167,20 +167,20 @@ def get_date(reason):
                print("Please input a valid date.")
              else:
                  if: reason == "book":
-                     date_available = bool(get_avail_times(date_input))
-                     if date_available is False:
-                         print(f"Sorry, {date_input} is unavailable.")
-                         print("Please enter a new date.")
-                     else:
-                         if CURRENT_DATE > date_fm:
-                            print("Invalid date input (past date).\n")
-                            print("Please enter a present or future date.")
-                         else:
-                            break
+                      date_available = bool(get_avail_times(date_input))
+                      if date_available is False:
+                          print(f"Sorry, {date_input} is unavailable.")
+                          print("Please enter a new date.")
+                      else:
+                          if CURRENT_DATE > date_fm:
+                              print("Invalid date input (past date).\n")
+                              print("Please enter a present or future date.")
+                          else:
+                             break
                  elif reason == "search":
                      break
 
-     return date_input
+      return date_input
 
 
 def get_time(data):
