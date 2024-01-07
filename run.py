@@ -149,7 +149,7 @@ def get_date(reason):
      clear_tmnl()
      print("Please enter an appointment date in the format of dd/mm/yyyy.")
 
-      while True:
+     while True:
         date_input = input("\n").capitalize()
         if date_input == "Exit":
            main_menu()
@@ -178,7 +178,7 @@ def get_date(reason):
                 elif reason == "search":
                     break
 
-    return date_input
+     return date_input
 
 
 def get_time(data):
@@ -190,7 +190,7 @@ def get_time(data):
     """
     clear_tmnl()
     times = get_avail_times(data)
-    if len(times) == 1:
+     if len(times) == 1:
         print(f"The only available time on {data} is {times[0]}.\n")
         print("Press 1 to continue with this time or 2 to enter a new date.")
         while True:
@@ -220,13 +220,13 @@ def get_time(data):
 
 
   def get_avail_times(data):
-    """
-    Gets return value from get_appts_for_date function for booked times
-    and removes them from the appointment times list to create a list of
-    available times and returns the available times. If the current date
-    is input, past times are removed from available times.
-    """
-    appt_times = ["0800",
+     """
+     Gets return value from get_appts_for_date function for booked times
+     and removes them from the appointment times list to create a list of
+     available times and returns the available times. If the current date
+     is input, past times are removed from available times.
+     """
+     appt_times = ["0800",
                   "0900",
                   "1000",
                   "1100",
@@ -235,25 +235,25 @@ def get_time(data):
                   "1500",
                   "1600"
                   ]
-    unav_times = get_appts_for_date(data, "booked_times")
-    av_times = [time for time in appt_times if time not in unav_times]
-    if data == CURRENT_DATE_FMTED:
+     unav_times = get_appts_for_date(data, "booked_times")
+     av_times = [time for time in appt_times if time not in unav_times]
+     if data == CURRENT_DATE_FMTED:
         current_time = datetime.datetime.now().strftime("%H%M")
         today_av_times = [time for time in av_times if time > current_time]
         return today_av_times
-    else:
+     else:
         return av_times
 
 def get_name(name_part):
-    clear_tmnl()
-    if name_part == ("f_name"):
+     clear_tmnl()
+     if name_part == ("f_name"):
          name_prompt = "first name"
-    elif name_part == ("l_name"):
+     elif name_part == ("l_name"):
         name_prompt = "surname"
 
-    print(f"Please enter the patient's {name_prompt}.")
+     print(f"Please enter the patient's {name_prompt}.")
 
-    while True:
+     while True:
         pat_name = input("\n").capitalize()
         if pat_name.isalpha() and len(pat_name) > 1:
             break
@@ -388,3 +388,23 @@ def search_name(reason):
         return [search_nme, name_appts, name_recs]
     else:
         display_records(name_recs, name_desc, name_heads)
+
+    
+def get_appts_for_name(name):
+     """
+     Gets and returns the appointments booked for the name
+     provided as an argument.
+     """
+     all_appts = APPTS.get_all_values()
+     name_appts = []
+     for appt in all_appts[1:]:
+         appt_name = appt[2:4]
+         if appt_name == name:
+            name_appt_row = [all_appts.index(appt) + 1]
+            name_appt = appt + name_appt_row
+            name_appts.append(name_appt)
+
+     return name_appts
+
+
+     
