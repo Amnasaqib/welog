@@ -321,3 +321,15 @@ def confirm_appointment(data):
         clear_tmnl()
         print("Booking terminated.\n")
         book_again_prompt("terminated")
+
+
+def update_appts(data):
+    """
+    Updates the appointments sheet using the data provided.
+    """
+    print("Updating appointments...\n")
+    APPTS.append_row(data, value_input_option='USER_ENTERED')
+    print("Appointment booked successfully!")
+    sort_sheet()
+
+
