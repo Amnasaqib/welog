@@ -87,7 +87,7 @@ def search_menu():
          if search_ans == ("1"):
              search_name("view")
          elif search_ans == ("2"):
-            search_date("search")
+             search_date("search")
          elif search_ans == ("3"):
              main_menu()
 
@@ -102,7 +102,7 @@ def app_info():
 
      print("To book an appointment:")
     
-     ("1 - Select option '(1)' in the menu.")
+     print("1 - Select option '(1)' in the menu.")
      print("2 - Enter the details that are requested, one by one.")
      print("3 - Confirm the details to book or cancel the booking.")
      print("NB - Enter 'Exit' when entering details to stop/return to menu.\n")
@@ -152,6 +152,12 @@ def collect_details():
          
 
 def get_date(reason):
+     """
+     Gets the date input from the user and validates that it is in the correct
+     format, and depending on the argument provided, is not a past date and,
+     is available for booking. Requests input until it is valid or returns
+     to menu if 'Exit' is input.
+     """
      clear_tmnl()
      print("Please enter an appointment date in the format of dd/mm/yyyy.")
 
@@ -250,6 +256,12 @@ def get_avail_times(data):
         return av_times
 
 def get_name(name_part):
+     """
+     Gets the name input from the user and validates that it contains
+     only letters, no spaces, and is at least 2 letters in length.
+     If the user inputs 'Exit', it returns them to the main menu.
+     Input is requested until it is valid.
+    """
      clear_tmnl()
      if name_part == ("f_name"):
          name_prompt = "first name"
@@ -259,8 +271,8 @@ def get_name(name_part):
      print(f"Please enter the client's {name_prompt}.")
 
      while True:
-        pat_name = input("\n").capitalize()
-        if pat_name.isalpha() and len(pat_name) > 1:
+        cli_name = input("\n").capitalize()
+        if cli_name.isalpha() and len(cli_name) > 1:
             break
         else:
             print("Invalid input, a name must contain:\n")
@@ -269,10 +281,10 @@ def get_name(name_part):
             print("- No spaces.\n")
             print(f"Please enter a valid {name_prompt}.")
 
-        if pat_name == "Exit":
+        if cli_name == "Exit":
             main_menu()
         else:
-            return pat_name
+            return cli_name
 
 def check_existing_appts(details):
      """
