@@ -281,10 +281,10 @@ def get_name(name_part):
             print("- No spaces.\n")
             print(f"Please enter a valid {name_prompt}.")
 
-        if cli_name == "Exit":
+        if pat_name == "Exit":
             main_menu()
         else:
-            return cli_name
+            return pat_name
 
 def check_existing_appts(details):
      """
