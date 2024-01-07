@@ -88,34 +88,35 @@ def main_menu():
 
 def app_info():
      """
-    Provides the user with instructions on how to use the app.
-    Once the user has read and is satisfied, they may press enter
-    to return to the main menu.
-    """
-    clear_tmnl()
+     Provides the user with instructions on how to use the app.
+     Once the user has read and is satisfied, they may press enter
+     to return to the main menu.
+     """
+     clear_tmnl()
 
-    print("To book an appointment:")
-    print("1 - Select option '(1)' in the menu.")
-    print("2 - Enter the details that are requested, one by one.")
-    print("3 - Confirm the details to book or cancel the booking.")
-    print("NB - Enter 'Exit' when entering details to stop/return to menu.\n")
+     print("To book an appointment:")
+    
+     ("1 - Select option '(1)' in the menu.")
+     print("2 - Enter the details that are requested, one by one.")
+     print("3 - Confirm the details to book or cancel the booking.")
+     print("NB - Enter 'Exit' when entering details to stop/return to menu.\n")
 
-    print("To view today's appointments, select option '(2)' in the menu.\n")
+     print("To view today's appointments, select option '(2)' in the menu.\n")
 
-    print("To search for specific appointments:")
-    print("1 - Select option '(3)' in the menu to go to the search menu.")
-    print("2 - Select between options to search for a name or a date.")
-    print("3 - Enter the name/date you wish to search for.")
-    print("4 - View the results of your search.\n")
+     print("To search for specific appointments:")
+     print("1 - Select option '(3)' in the menu to go to the search menu.")
+     print("2 - Select between options to search for a name or a date.")
+     print("3 - Enter the name/date you wish to search for.")
+     print("4 - View the results of your search.\n")
 
-    print("To cancel an appointment:")
-    print("1 - Select option '(4)' in the menu.")
-    print("2 - Enter the name and surname you wish to cancel for, one by one.")
-    print("3 - Provide final confirmation to cancel the appointment.")
-    print("NB - Enter 'Exit' when entering details to stop/return to menu.\n")
+     print("To cancel an appointment:")
+     print("1 - Select option '(4)' in the menu.")
+     print("2 - Enter the name and surname you wish to cancel for, one by one.")
+     print("3 - Provide final confirmation to cancel the appointment.")
+     print("NB - Enter 'Exit' when entering details to stop/return to menu.\n")
 
-    input("Press enter to return to menu\n")
-    main_menu()
+     input("Press enter to return to menu\n")
+     main_menu()
 
 
 def collect_details():
@@ -124,6 +125,25 @@ def collect_details():
      and adds them to a list that can be appended to the
      appointments sheet after being checked and confirmed.
      """
-      clear_tmnl()
-      appt_categories = APPTS.row_values(1)
-      appt_detail = dict.fromkeys(appt_categories)
+     clear_tmnl()
+     appt_categories = APPTS.row_values(1)
+     appt_detail = dict.fromkeys(appt_categories)
+
+     appt_detail["Date"] = get_date("book")
+     appt_detail["Time"] = get_time(appt_detail["Date"])
+     appt_detail["Name"] = get_name("f_name")
+     appt_detail["Surname"] = get_name("l_name")
+      
+     appt_details = list(appt_detail.values())
+     existing_appt_check = check_existing_appts(appt_details)
+     if existing_appt_check:
+        clear_tmnl()
+         print("A booking for this client already exists on this date.")
+         print("You can only book one appointment per day per client.\n")
+         book_again_prompt("terminated")
+    else:
+        confirm_appointment(appt_details)
+         
+
+
+  
