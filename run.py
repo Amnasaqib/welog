@@ -118,3 +118,12 @@ def app_info():
     main_menu()
 
 
+def collect_details():
+     """
+     Collects the clients's details from other functions
+     and adds them to a list that can be appended to the
+     appointments sheet after being checked and confirmed.
+     """
+      clear_tmnl()
+      appt_categories = APPTS.row_values(1)
+      appt_detail = dict.fromkeys(appt_categories)
