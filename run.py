@@ -581,7 +581,7 @@ def dlte_past_appts():
                  row_num = date_cell.row
                  APPTS.delete_rows(row_num)
 
- def sort_sheet():
+def sort_sheet():
      """
      Sorts the sheet by dates and times.
      """
@@ -597,7 +597,7 @@ def clear_tmnl():
      os.system("clear")
 
 
- def main():
+def main():
      """
      Runs necessary functions at the start of the program.
      """
@@ -606,4 +606,4 @@ def clear_tmnl():
      main_menu()
 
 
- main()
+main()
