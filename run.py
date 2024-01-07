@@ -27,21 +27,21 @@ CURRENT_DATE = datetime.date.today()
 CURRENT_DATE_FMTED = datetime.datetime.strftime(CURRENT_DATE, "%d/%m/%Y")
 
 def main_menu():
-    """
-    Displays the main menu options for the user
-    to select in order to navigate the application.
-    """
-    clear_tmnl()
-    print("Welog - Main menu\n")
-    print("Please select an option below.\n")
+     """
+     Displays the main menu options for the user
+     to select in order to navigate the application.
+     """
+     clear_tmnl()
+     print("Welog - Main menu\n")
+     print("Please select an option below.\n")
 
-    print("(1) Book new appointment.")
-    print("(2) View today's appointments.")
-    print("(3) Search appointments.")
-    print("(4) Cancel appointment.")
-    print("(5) View application instructions.")
+     print("(1) Book new appointment.")
+     print("(2) View today's appointments.")
+     print("(3) Search appointments.")
+     print("(4) Cancel appointment.")
+     print("(5) View application instructions.")
 
-    while True:
+     while True:
         main_menu_ans = input("\n")
         if main_menu_ans not in ("1", "2", "3", "4", "5"):
             print("Invalid input.")
@@ -49,15 +49,15 @@ def main_menu():
         else:
             break
 
-    if main_menu_ans == ("1"):
+     if main_menu_ans == ("1"):
         collect_details()
-    elif main_menu_ans == ("2"):
+     elif main_menu_ans == ("2"):
         search_date("today")
-    elif main_menu_ans == ("3"):
+     elif main_menu_ans == ("3"):
         search_menu()
-    elif main_menu_ans == ("4"):
+     elif main_menu_ans == ("4"):
         cancelation_prompt()
-    elif main_menu_ans == ("5"):
+     elif main_menu_ans == ("5"):
         app_info()
 
 def search_menu():
@@ -72,7 +72,7 @@ def search_menu():
      print("(2) Search appointments by date.")
      print("(3) Return to main menu.")
 
-    while True:
+     while True:
         search_ans = input("\n")
          if search_ans not in ("1", "2", "3"):
              print("Invalid input.")
@@ -272,40 +272,39 @@ def get_name(name_part):
             return pat_name
 
 def check_existing_appts(details):
-    """
-    Checks the appointment records for the name and date provided
-    and if a booking already exists for the details, returns true,
-    otherwise, it returns false.
-    """
-    detail_date = details[0]
-    detail_name = details[2:4]
-    date_bookings = get_appts_for_date(detail_date, "bookings")
+     """
+     Checks the appointment records for the name and date provided
+     and if a booking already exists for the details, returns true,
+     otherwise, it returns false.
+     """
+     detail_date = details[0]
+     detail_name = details[2:4]
+     date_bookings = get_appts_for_date(detail_date, "bookings")
 
-    # Idea on how to implement check came from stackoverflow.
-    # (Link in the readme)
-    existing_appt = None
-    for booking in date_bookings:
-        for i in range(len(booking) - len(detail_name) + 1):
-             if detail_name == booking[i:i+len(detail_name)]:
-                 existing_appt = True
+    
+     existing_appt = None
+     for booking in date_bookings:
+         for i in range(len(booking) - len(detail_name) + 1):
+              if detail_name == booking[i:i+len(detail_name)]:
+                  existing_appt = True
 
      return existing_appt   
 
 
 def confirm_appointment(data):
-    """
-    Presents the user with the appointment details entered
-    and asks for final confirmation to make the booking
-    or cancel. Input is requested until a valid option
-    is input.
-    """
-    clear_tmnl()
-    appt_headers = ["Date", "Time", "Name", "Surname"]
-    print("Please confirm the following details before booking.\n")
-    print(tabulate([data], headers=appt_headers, tablefmt="fancy_grid"))
-    print("Enter Y to confirm or N to cancel.\n")
-    print("WARNING!")
-    print("Entering N will cancel the appointment and data will be lost.")    
+     """
+     Presents the user with the appointment details entered
+     and asks for final confirmation to make the booking
+     or cancel. Input is requested until a valid option
+     is input.
+     """
+     clear_tmnl()
+     appt_headers = ["Date", "Time", "Name", "Surname"]
+     print("Please confirm the following details before booking.\n")
+     print(tabulate([data], headers=appt_headers, tablefmt="fancy_grid"))
+     print("Enter Y to confirm or N to cancel.\n")
+     print("WARNING!")
+     print("Entering N will cancel the appointment and data will be lost.")    
 
      while True:
          confirmation = input("\n").capitalize()
@@ -316,80 +315,80 @@ def confirm_appointment(data):
 
 
     
-    if confirmation == ("Y"):
-        update_appts(data)
-        book_again_prompt("booked")
-    elif confirmation == ("N"):
-        clear_tmnl()
-        print("Booking terminated.\n")
-        book_again_prompt("terminated")
+     if confirmation == ("Y"):
+         update_appts(data)
+         book_again_prompt("booked")
+     elif confirmation == ("N"):
+         clear_tmnl()
+         print("Booking terminated.\n")
+         book_again_prompt("terminated")
 
 
 def update_appts(data):
-    """
-    Updates the appointments sheet using the data provided.
-    """
-    print("Updating appointments...\n")
-    APPTS.append_row(data, value_input_option='USER_ENTERED')
-    print("Appointment booked successfully!")
-    sort_sheet()
+     """
+     Updates the appointments sheet using the data provided.
+     """
+     print("Updating appointments...\n")
+     APPTS.append_row(data, value_input_option='USER_ENTERED')
+     print("Appointment booked successfully!")
+     sort_sheet()
 
 
 def book_again_prompt(status):
-    """
-    Provides user with options to either re-enter details or enter
-    details for a new booking depending on the confirmation
-    status provided from the confirm_appointment function.
-    Input is requested until it is valid.
-    """
-    if status == "terminated":
-        prompt = "Enter new details"
-    elif status == "booked":
-        prompt = "Book another appointment"
+     """
+     Provides user with options to either re-enter details or enter
+     details for a new booking depending on the confirmation
+     status provided from the confirm_appointment function.
+     Input is requested until it is valid.
+     """
+     if status == "terminated":
+         prompt = "Enter new details"
+     elif status == "booked":
+         prompt = "Book another appointment"
 
-    print("Please select an option below.\n")
-    print(f"(1) {prompt}.")
-    print("(2) Return to main menu.")
+     print("Please select an option below.\n")
+     print(f"(1) {prompt}.")
+     print("(2) Return to main menu.")
 
-    while True:
-        re_book_ans = input("")
-        if re_book_ans not in ("1", "2"):
-            print("Invalid input.\n")
-            print("Please choose an option between 1 and 2.")
-        else:
-            break
+     while True:
+         re_book_ans = input("")
+         if re_book_ans not in ("1", "2"):
+             print("Invalid input.\n")
+             print("Please choose an option between 1 and 2.")
+         else:
+             break
 
-    if re_book_ans == "1":
-        collect_details()
-    elif re_book_ans == "2":
-        main_menu()
+     if re_book_ans == "1":
+         collect_details()
+     elif re_book_ans == "2":
+         main_menu()
 
 def search_name(reason):
-    """
-    Gets return values of get_name function for both name and surname
-    and defines them in a single variable (search_name) as a list
-    to pass to get_appts_for_name function and finally passes the
-    returned records to the display_records function or returns them
-    to the cancelation prompt, depending on argument given.
-    """
-    clear_tmnl()
-    f_name = get_name("f_name")
-    l_name = get_name("l_name")
-    search_nme = [f_name, l_name]
-    name_appts = get_appts_for_name(search_nme)
+     """
+     Gets return values of get_name function for both name and surname
+     and defines them in a single variable (search_name) as a list
+     to pass to get_appts_for_name function and finally passes the
+     returned records to the display_records function or returns them
+     to the cancelation prompt, depending on argument given.
+     """
+     clear_tmnl()
+     f_name = get_name("f_name")
+     l_name = get_name("l_name")
+     search_nme = [f_name, l_name]
+     name_appts = get_appts_for_name(search_nme)
 
-    name_recs = []
-    for name_appt in name_appts:
-        name_rec = name_appt[0:2]
-        name_recs.append(name_rec)
+     name_recs = []
+     for name_appt in name_appts:
+         name_rec = name_appt[0:2]
+         name_recs.append(name_rec)
 
-    name_desc = f"the name {' '.join(search_nme)}"
-    name_heads = ["Date", "Time"]
+     name_desc = f"the name {' '.join(search_nme)}"
+     name_heads = ["Date", "Time"]
 
-    if reason == "cancelation":
-        return [search_nme, name_appts, name_recs]
-    else:
-        display_records(name_recs, name_desc, name_heads)
+     if reason == "cancelation":
+         return [search_nme, name_appts, name_recs]
+     else:
+         display_records(name_recs, name_desc, name_heads)
 
     
 def get_appts_for_name(name):
@@ -513,7 +512,7 @@ def cancelation_prompt():
              search_again_ans = input("\n")
              if search_again_ans not in ("1", "2"):
                  print("Invalid input.\n")
-                print("Please choose an option between 1 and 2.")
+                 print("Please choose an option between 1 and 2.")
              else:
                  break
          if search_again_ans == "1":
