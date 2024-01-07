@@ -138,9 +138,9 @@ def collect_details():
      existing_appt_check = check_existing_appts(appt_details)
      if existing_appt_check:
         clear_tmnl()
-         print("A booking for this client already exists on this date.")
-         print("You can only book one appointment per day per client.\n")
-         book_again_prompt("terminated")
+        print("A booking for this client already exists on this date.")
+        print("You can only book one appointment per day per client.\n")
+        book_again_prompt("terminated")
     else:
         confirm_appointment(appt_details)
          
