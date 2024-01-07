@@ -76,7 +76,7 @@ def main_menu():
                print("Invalid input.")
                print("Please choose an option between 1 and 2.")
         else:
-               break
+            break
 
         if search_ans == ("1"):
            search_name("view")
