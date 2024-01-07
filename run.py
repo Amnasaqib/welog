@@ -252,7 +252,7 @@ def get_name(name_part):
      elif name_part == ("l_name"):
         name_prompt = "surname"
 
-     print(f"Please enter the patient's {name_prompt}.")
+     print(f"Please enter the client's {name_prompt}.")
 
      while True:
         pat_name = input("\n").capitalize()
