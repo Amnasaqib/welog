@@ -166,7 +166,7 @@ def get_date(reason):
                print("- Contain realistic values for day, month and year.\n")
                print("Please input a valid date.")
              else:
-                 if: reason == "book":
+                  if: reason == "book":
                       date_available = bool(get_avail_times(date_input))
                       if date_available is False:
                           print(f"Sorry, {date_input} is unavailable.")
