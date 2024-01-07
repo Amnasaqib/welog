@@ -75,7 +75,7 @@ def main_menu():
             if search_ans not in ("1", "2", "3"):
                print("Invalid input.")
                print("Please choose an option between 1 and 2.")
-           else:
+        else:
                break
 
         if search_ans == ("1"):
