@@ -1,5 +1,7 @@
 import os
 import datetime
+import pyinputplus as pyip
+from tabulate import tabulate
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -589,4 +591,21 @@ def dlte_past_appts():
      APPTS.sort((1, "asc"))     
 
 
-     
+def clear_tmnl():
+     """
+     Clears the terminal when called.
+    
+     """
+     os.system("clear")
+
+
+ def main():
+     """
+     Runs necessary functions at the start of the program.
+     """
+     dlte_past_appts()
+     sort_sheet()
+     main_menu()
+
+
+ main()
