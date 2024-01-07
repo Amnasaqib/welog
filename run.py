@@ -73,7 +73,7 @@ def search_menu():
      print("(3) Return to main menu.")
 
      while True:
-        search_ans = input("\n")
+         search_ans = input("\n")
          if search_ans not in ("1", "2", "3"):
              print("Invalid input.")
              print("Please choose an option between 1 and 2.")
