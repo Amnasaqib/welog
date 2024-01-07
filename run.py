@@ -1,3 +1,7 @@
+""" 
+Main file to run the application.
+"""
+
 import os
 import datetime
 import pyinputplus as pyip
@@ -46,7 +50,7 @@ def main_menu():
         if main_menu_ans not in ("1", "2", "3", "4", "5"):
             print("Invalid input.")
             print("Please choose an option between 1 and 5.")
-        else:
+         else:
             break
 
      if main_menu_ans == ("1"):
