@@ -271,8 +271,8 @@ def get_name(name_part):
      print(f"Please enter the client's {name_prompt}.")
 
      while True:
-        cli_name = input("\n").capitalize()
-        if cli_name.isalpha() and len(cli_name) > 1:
+        pat_name = input("\n").capitalize()
+        if pat_name.isalpha() and len(pat_name) > 1:
             break
         else:
             print("Invalid input, a name must contain:\n")
