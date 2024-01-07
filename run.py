@@ -581,4 +581,12 @@ def dlte_past_appts():
                  row_num = date_cell.row
                  APPTS.delete_rows(row_num)
 
-                 
+ def sort_sheet():
+     """
+     Sorts the sheet by dates and times.
+     """
+     APPTS.sort((2, "asc"))
+     APPTS.sort((1, "asc"))     
+
+
+     
