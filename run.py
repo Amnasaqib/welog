@@ -144,7 +144,7 @@ def collect_details():
         print("You can only book one appointment per day per client.\n")
         book_again_prompt("terminated")
      else:
-        confirm_appointment(appt_details)
+         confirm_appointment(appt_details)
          
 
 def get_date(reason):
@@ -152,20 +152,20 @@ def get_date(reason):
      print("Please enter an appointment date in the format of dd/mm/yyyy.")
 
      while True:
-        date_input = input("\n").capitalize()
-        if date_input == "Exit":
+         date_input = input("\n").capitalize()
+         if date_input == "Exit":
            main_menu()
            break
-        else:
-           try:
-                date_fm = datetime.datetime.strptime(date_input,
+         else:
+            try:
+                 date_fm = datetime.datetime.strptime(date_input,
                                                      "%d/%m/%Y").date()
-           except ValueError:
+             except ValueError:
                print("Invalid input, a date should:\n")
                print("- Be in the format of dd/mm/yyyy.")
                print("- Contain realistic values for day, month and year.\n")
                print("Please input a valid date.")
-            else:
+             else:
                  if: reason == "book":
                      date_available = bool(get_avail_times(date_input))
                      if date_available is False:
