@@ -75,7 +75,7 @@ def main_menu():
             if search_ans not in ("1", "2", "3"):
                print("Invalid input.")
                print("Please choose an option between 1 and 2.")
-           else:
+            else:
                break
 
         if search_ans == ("1"):
@@ -243,3 +243,10 @@ def get_time(data):
         return today_av_times
     else:
         return av_times
+
+def get_name(name_part):
+     clear_tmnl()
+     if name_part == ("f_name"):
+         name_prompt = "first name"
+     elif name_part == ("l_name"):
+        name_prompt = "surname"
