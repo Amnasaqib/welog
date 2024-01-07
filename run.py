@@ -208,7 +208,7 @@ def get_time(data):
          else:
              collect_details()
 
-         else:
+     else:
          print(f"Below is a list of available times for {data}.\n")
          time_input = pyip.inputMenu(times,
                                      prompt="Select a time from the list.\n",
