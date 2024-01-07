@@ -245,8 +245,26 @@ def get_time(data):
         return av_times
 
 def get_name(name_part):
-     clear_tmnl()
-     if name_part == ("f_name"):
+    clear_tmnl()
+    if name_part == ("f_name"):
          name_prompt = "first name"
-     elif name_part == ("l_name"):
+    elif name_part == ("l_name"):
         name_prompt = "surname"
+
+    print(f"Please enter the patient's {name_prompt}.")
+
+    while True:
+        pat_name = input("\n").capitalize()
+        if pat_name.isalpha() and len(pat_name) > 1:
+            break
+        else:
+            print("Invalid input, a name must contain:\n")
+            print("- At least 2 letters.")
+            print("- Only letters.")
+            print("- No spaces.\n")
+            print(f"Please enter a valid {name_prompt}.")
+
+        if pat_name == "Exit":
+            main_menu()
+        else:
+            return pat_name
