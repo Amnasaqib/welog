@@ -64,7 +64,7 @@ def search_menu():
      """
      Displays options to search by date, by name, or return to the main menu.
      """
-    clear_tmnl()
+     clear_tmnl()
      print("Welog - Search Menu\n")
      print("What would you like to do?\n")
 
