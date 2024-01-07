@@ -50,7 +50,7 @@ def main_menu():
         if main_menu_ans not in ("1", "2", "3", "4", "5"):
             print("Invalid input.")
             print("Please choose an option between 1 and 5.")
-         else:
+        else:
             break
 
      if main_menu_ans == ("1"):
@@ -143,10 +143,10 @@ def collect_details():
      appt_details = list(appt_detail.values())
      existing_appt_check = check_existing_appts(appt_details)
      if existing_appt_check:
-        clear_tmnl()
-        print("A booking for this client already exists on this date.")
-        print("You can only book one appointment per day per client.\n")
-        book_again_prompt("terminated")
+         clear_tmnl()
+         print("A booking for this client already exists on this date.")
+         print("You can only book one appointment per day per client.\n")
+         book_again_prompt("terminated")
      else:
          confirm_appointment(appt_details)
          
