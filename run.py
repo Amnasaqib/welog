@@ -531,7 +531,7 @@ def cancelation_prompt():
                                    )
          if cncl_ans.capitalize() == "Exit":
              main_menu()
-        else:
+         else:
              for appt_opt in appt_opts:
                  if cncl_ans.split(" ")[0] in appt_opt:
                      appt_to_cncl = appt_opt
